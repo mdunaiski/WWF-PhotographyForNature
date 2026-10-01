@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vote for my photos – WWF-Australia Photography for Nature Competition</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:opsz,wght@7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --wall: #dde5de; --ink: #16261f; --mat: #fafaf6;
+    --green: #2c6a4e; --green-dark: #1d4d38; --gold: #d9a52b;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Literata", Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: var(--wall); color: var(--ink); font: 400 1.0625rem/1.6 var(--body); }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .wrap { width: min(1000px, 100% - 2.5rem); margin-inline: auto; }
+
+  header { padding: 1.25rem 0; border-bottom: 1px solid rgba(22,38,31,.18); }
+  .logos { display: flex; align-items: center; gap: 1.5rem; }
+  .logo { height: 52px; display: grid; place-items: center; }
+  .logo img { height: 100%; width: auto; display: block; }
+  .logo.placeholder { min-width: 120px; padding: 0 .9rem; border: 1.5px dashed rgba(22,38,31,.45); border-radius: 6px; font: 500 .8rem var(--display); }
+
+  .intro { padding: clamp(2rem, 6vw, 4rem) 0 1.5rem; }
+  h1 { font: 700 clamp(2.2rem, 6vw, 4rem)/1.05 var(--display); letter-spacing: -.03em; margin: 0 0 1rem; }
+  .intro p { max-width: 50ch; margin: 0; }
+
+  .entries { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1.5rem, 4vw, 3rem); padding: 1.5rem 0 4rem; }
+  .print { margin: 0; padding: clamp(.6rem, 2vw, 1.1rem); background: var(--mat); box-shadow: 0 18px 30px -18px rgba(22,38,31,.55); }
+  .photo { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #8fae9a, #41674f); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  h2 { font: 700 1.5rem/1.15 var(--display); margin: 1.1rem 0 1rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .7rem; }
+  .btn { padding: .75rem 1.25rem; border: 2px solid var(--green); border-radius: 999px; font: 500 1rem var(--display); text-decoration: none; transition: background-color .15s, color .15s; }
+  .vote { background: var(--green); color: #fff; }
+  .vote:hover { background: var(--green-dark); border-color: var(--green-dark); }
+  .view { color: var(--green-dark); }
+  .view:hover { background: var(--green); color: #fff; }
+
+  footer { border-top: 1px solid rgba(22,38,31,.18); padding: 2rem 0 2.5rem; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+  footer p { margin: 0; max-width: 50ch; }
+  #share { padding: .7rem 1.2rem; background: none; color: var(--ink); border: 2px solid var(--ink); border-radius: 999px; font: 500 1rem var(--display); cursor: pointer; }
+  #share:hover { background: var(--ink); color: var(--mat); }
+
+  @media (max-width: 720px) { .entries { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap logos">
+    <img src="images/wwf-australia-logo.png" alt="WWF-Australia" height = "100">
+    <img src="images/wwf-photo-logo.png" alt="WWF-PhotographyForNature" height = "100">
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1>Two photos. Your vote.</h1>
+    <p>I've entered the WWF-Australia Photography for Nature Competition. Follow the links below to vote for my entries.</p>
+    <br>
+    <p>Donations help protect Austraian species and habitats!</p>
+  </section>
+
+  <section class="entries">
+    <article>
+      <figure class="print"><div class="photo"><img src="images/entry-1.jpg" alt="Where's Wallaby?" loading="lazy"></div></figure>
+      <h2>Where's Wallaby?</h2>
+      <div class="actions">
+        <a class="btn view" href="https://photographyfornature.com.au/contestant/5514?contest=1" target="_blank" rel="noopener">View entry</a>
+      </div>
+    </article>
+
+    <article>
+      <figure class="print"><div class="photo"><img src="images/entry-2.jpg" alt="Where the Wild Water Flows" loading="lazy"></div></figure>
+      <h2>Where the Wild Water Flows</h2>
+      <div class="actions">
+        <a class="btn view" href="https://photographyfornature.com.au/contestant/5519?contest=2" target="_blank" rel="noopener">View entry</a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Thanks for your support. Follow me on instagram to see more of my photos! <a href="https://www.instagram.com/madin124_">@madin124_</a>.</p>
+    <button id="share" type="button">Copy link to share this page</button>
+  </div>
+</footer>
+
+<script>
+  const share = document.getElementById("share");
+  share.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      share.textContent = "Link copied";
+    } catch {
+      share.textContent = "Copy it from the address bar";
+    }
+    setTimeout(() => (share.textContent = "Copy link to share"), 2500);
+  });
+</script>
+
+</body>
+</html>
